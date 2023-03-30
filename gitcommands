@@ -1,7 +1,292 @@
-git status
 
-git add .
+$ git clone git@github.com:kadiveti/devops.git
+Cloning into 'devops'...
+warning: You appear to have cloned an empty repository.
 
-git commit
+saika@LAPTOP-J1Q87THT MINGW64 ~
+$ cd devops/
 
-git push
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ cd .git/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ ls -l
+total 7
+-rw-r--r-- 1 saika 197609  21 Mar 31 07:25 HEAD
+-rw-r--r-- 1 saika 197609 293 Mar 31 07:25 config
+-rw-r--r-- 1 saika 197609  73 Mar 31 07:25 description
+drwxr-xr-x 1 saika 197609   0 Mar 31 07:25 hooks/
+drwxr-xr-x 1 saika 197609   0 Mar 31 07:25 info/
+drwxr-xr-x 1 saika 197609   0 Mar 31 07:25 objects/
+drwxr-xr-x 1 saika 197609   0 Mar 31 07:25 refs/
+
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cat HEAD
+ref: refs/heads/main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cat config
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+[remote "origin"]
+        url = git@github.com:kadiveti/devops.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+        remote = origin
+        merge = refs/heads/main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cat description
+Unnamed repository; edit this file 'description' to name the repository.
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cd hooks/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/hooks (GIT_DIR!)
+$ ls
+applypatch-msg.sample*      pre-commit.sample*        prepare-commit-msg.sample*
+commit-msg.sample*          pre-merge-commit.sample*  push-to-checkout.sample*
+fsmonitor-watchman.sample*  pre-push.sample*          update.sample*
+post-update.sample*         pre-rebase.sample*
+pre-applypatch.sample*      pre-receive.sample*
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/hooks (GIT_DIR!)
+$ cat applypatch-msg.sample
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cd info/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/info (GIT_DIR!)
+$ ls -l
+total 1
+-rw-r--r-- 1 saika 197609 240 Mar 31 07:25 exclude
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/info (GIT_DIR!)
+$ cat exclude
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/info (GIT_DIR!)
+$ cd ..
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git (GIT_DIR!)
+$ cd objects/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops/.git/objects (GIT_DIR!)
+$ ls -l
+total 0
+drwxr-xr-x 1 saika 197609 0 Mar 31 07:25 info/
+drwxr-xr-x 1 saika 197609 0 Mar 31 07:25 pack/
+
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ vim README.md
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ cat README.md
+THis is Devops Learning Path
+
+Learning Git
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git add .
+warning: LF will be replaced by CRLF in README.md.
+The file will have its original line endings in your working directory
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ vi README.md
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git commit
+[main (root-commit) 13d7031] This is first commit
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git log
+commit 13d7031cfffc04bfe5cebc12131ed22538838686 (HEAD -> main)
+Author: kadiveti <saikumar0303@gmail.com>
+Date:   Fri Mar 31 07:35:38 2023 +0800
+
+    This is first commit
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 253 bytes | 253.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:kadiveti/devops.git
+ * [new branch]      main -> main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/devops (main)
+$ cd ..
+
+saika@LAPTOP-J1Q87THT MINGW64 ~
+$ mkdir GIT Learning
+
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~
+$ cd L
+Learning/       Links/          Local Settings/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~
+$ cd Learning/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning
+$ vi gitcommands
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning
+$ git init
+Initialized empty Git repository in C:/Users/saika/Learning/.git/
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ ls -l
+total 1
+-rw-r--r-- 1 saika 197609 44 Mar 31 07:49 gitcommands
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ git remote add origin git@github.com:kadiveti/gitlearning.git
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ git push --set-upstream origin master
+error: src refspec master does not match any
+error: failed to push some refs to 'github.com:kadiveti/gitlearning.git'
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ git push --set-upstream origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'github.com:kadiveti/gitlearning.git'
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (master)
+$ git branch -M main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'github.com:kadiveti/gitlearning.git'
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        gitcommands
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git add .
+warning: LF will be replaced by CRLF in gitcommands.
+The file will have its original line endings in your working directory
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git commit
+[main (root-commit) ee2e925] Git Commands to Learn
+ 1 file changed, 7 insertions(+)
+ create mode 100644 gitcommands
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git status
+
