@@ -290,3 +290,61 @@ $ git commit
 saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
 $ git status
 
+
+
+
+
+
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git branch
+* main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git pull
+From github.com:kadiveti/gitlearning
+ * [new branch]      feature    -> origin/feature
+Already up to date.
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git checkout feature
+Switched to a new branch 'feature'
+branch 'feature' set up to track 'origin/feature'.
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (feature)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git checkout -b bug
+Switched to a new branch 'bug'
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (bug)
+$ git branch
+* bug
+  feature
+  main
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (bug)
+$ git push
+fatal: The current branch bug has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin bug
+
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (bug)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+saika@LAPTOP-J1Q87THT MINGW64 ~/Learning (main)
+$ git push
+Everything up-to-date
+
